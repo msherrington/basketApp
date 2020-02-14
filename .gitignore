@@ -1,2 +1,14 @@
 .DS_Store
 .idea/
+
+*.sqlite3
+*.tmp
+
+__pycache__
+
+venv/
+migrations/
+node_modules/
+bower_components/
+
+secret_settings.py
