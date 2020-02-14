@@ -1,0 +1,15 @@
+{
+  "name": "basket_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "controllers/basketCtrl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Sherrington",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-material": "^1.1.21"
+  }
+}

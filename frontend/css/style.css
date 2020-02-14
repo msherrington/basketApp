@@ -1,0 +1,43 @@
+.container {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 10%;
+}
+
+.alert {
+    color: red;
+    font-size: 16px;
+    height: 5%;
+    text-align: left;
+}
+
+.box {
+    padding: 20px;
+    width: 100%;
+    border: solid black;
+    /*margin-left: 20%;*/
+    /*margin-right: 20%;*/
+}
+
+.header {
+    /*margin-top: 10%;*/
+    border-radius: 25px 25px 0 0;
+    font-size: 26px;
+    color: black;
+    background: darkgrey;
+    height: 10%;
+    border-bottom: none;
+}
+
+.body {
+    /*margin-bottom: 20%;*/
+    /*border-radius: 0 0 25px 25px;*/
+    /*font-size: 18px;*/
+    /*color: black;*/
+    /*background: darkgrey;*/
+    height: 100%;
+}
+
+.complete {
+    height: 100px;
+}
