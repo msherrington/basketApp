@@ -31,21 +31,25 @@
                         <md-button tabindex="2" class="button-full" ng-click="basketCtrl.addItem()">Save</md-button>
                         <md-button tabindex="3" ng-if="basketCtrl.itemInput" class="button-full" ng-click="basketCtrl.clearInput()">Clear</md-button>
                     </form>
-                </div>
 
-                <div ng-repeat="item in basketCtrl.orderItems">
-                    {{item.name}} - Quantity: {{item.quantity}}
-                    <md-button class="button-full" ng-click="basketCtrl.increase(item)">+</md-button>
-                    <md-button class="button-full" ng-click="basketCtrl.decrease(item)">-</md-button>
-                    <md-button class="button-full" ng-click="basketCtrl.removeItem(item)">x</md-button>
-                </div>
+                    <div ng-if="basketCtrl.existingItemNames[0]">
+                        Items in basket: {{ basketCtrl.existingItemNames.length }}
+                    </div>
 
-                <div class="footer">
-                    <md-button tabindex="4" ng-if="basketCtrl.orderItems[0]" class="button-full" ng-click="basketCtrl.submitOrder()">
-                        Submit Order
-                    </md-button>
-                </div>
+                    <div ng-repeat="item in basketCtrl.orderItems">
+                        {{item.name}} - Quantity: {{item.quantity}}
+                        <md-button class="button-full" ng-click="basketCtrl.increase(item)">+</md-button>
+                        <md-button class="button-full" ng-click="basketCtrl.decrease(item)">-</md-button>
+                        <md-button class="button-full" ng-click="basketCtrl.removeItem(item)">x</md-button>
+                    </div>
 
+                    <div class="footer">
+                        <md-button tabindex="4" ng-if="basketCtrl.orderItems[0]" class="button-full" ng-click="basketCtrl.submitOrder()">
+                            Submit Order
+                        </md-button>
+                    </div>
+
+                </div>
             </div>
 
 
