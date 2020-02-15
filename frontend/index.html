@@ -28,7 +28,8 @@
 
                     <form ng-submit="basketCtrl.addItem()">
                         <md-input-container ng-click="basketCtrl.clearAlert()" class="md-input-container md-input-has-value">
-                            <input tabindex="1" class="md-input" type="text" ng-model="basketCtrl.itemInput" placeholder="Add an Item"/>
+                            <input tabindex="1" class="md-input" type="text" placeholder="Add an Item"
+                                   ng-change="basketCtrl.changeInput()" ng-model="basketCtrl.itemInput"/>
                         </md-input-container>
                         <md-button tabindex="2" class="md-button md-raised" ng-click="basketCtrl.addItem()">Add</md-button>
                         <md-button tabindex="3" class="md-button md-raised" ng-click="basketCtrl.clearInput()"

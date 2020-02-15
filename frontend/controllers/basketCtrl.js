@@ -1,8 +1,6 @@
 const app = angular.module('basketApp', [])
 
-app.controller('basketController', function (
-    $http,
-) {
+app.controller('basketController', function ($http) {
 
     const self = this
 
@@ -12,6 +10,7 @@ app.controller('basketController', function (
     }
 
     self.newOrder = () => {
+        self.order = []
         self.orderComplete = false
         self.orderItems = []
         self.existingItemNames = []
@@ -46,6 +45,12 @@ app.controller('basketController', function (
         }
     }
 
+    self.changeInput = () => {
+        if (self.itemInput && self.itemInput.toLowerCase() !== self.existingItem.toLowerCase()) {
+            self.clearAlert()
+        }
+    }
+
     const capitalize = name => {
         if (typeof name !== 'string') return name
         return name.charAt(0).toUpperCase() + name.slice(1)
@@ -71,11 +76,13 @@ app.controller('basketController', function (
         if (index > -1) array.splice(index, 1)
     }
 
-    self.submitOrder = async() => {
+    self.submitOrder = async () => {
         const data = { order_items: self.orderItems }
-        const response = await $http.post(self.djangoRestApi + '/submit-order', data)
-        self.order = response.data[0]
-        self.orderComplete = true
+        await $http.post(self.djangoRestApi + '/submit-order', data).then(response => {
+            self.order = response.data[0]
+            self.orderComplete = true
+        })
+        console.log('Order Submitted successfully!', self.order.order_items)
     }
 
     init()
