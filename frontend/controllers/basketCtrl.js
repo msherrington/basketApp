@@ -14,6 +14,14 @@ app.controller('basketController', function (
         self.existingItemNames = []
         // self.itemList = await getItems()//{id:1, name: 'this'}, {id:2, name: 'that'}]
         // self.itemNames = self.itemList.map(item => item.name.toLowerCase())
+        document.addEventListener('keydown', handleKeyPress, false)
+    }
+
+
+    const handleKeyPress = $event => {
+        if ($event.key === 'Enter') {
+            self.addItem()
+        }
     }
 
     const getItems = async () => {
@@ -57,8 +65,9 @@ app.controller('basketController', function (
         }
     }
 
-    self.submit = () => {
-
+    self.submitOrder = async() => {
+        const response = await $http.post(self.djangoRestApi + '/items/')
+        return response.data
     }
 
     self.clearAlert = () => {
