@@ -7,19 +7,24 @@ app.controller('basketController', function (
     const self = this
 
     const init = async () => {
-        self.clearInput()
-        self.clearAlert()
+        self.newOrder()
         self.djangoRestApi = 'http://localhost:8000/api'
-        self.orderItems = []
-        self.existingItemNames = []
-        document.addEventListener('keydown', handleKeyPress, false)
     }
 
+    self.newOrder = () => {
+        self.orderComplete = false
+        self.orderItems = []
+        self.existingItemNames = []
+        self.clearInput()
+        self.clearAlert()
+    }
 
-    const handleKeyPress = e => {
-        if (e.key === 'Enter') {
-            self.addItem()
-        }
+    self.clearInput = () => {
+        self.itemInput = ''
+    }
+
+    self.clearAlert = () => {
+        self.itemExists = false
     }
 
     self.addItem = async () => {
@@ -39,6 +44,11 @@ app.controller('basketController', function (
             }
             self.clearInput()
         }
+    }
+
+    const capitalize = name => {
+        if (typeof name !== 'string') return name
+        return name.charAt(0).toUpperCase() + name.slice(1)
     }
 
     self.increase = item => {
@@ -64,21 +74,8 @@ app.controller('basketController', function (
     self.submitOrder = async() => {
         const data = { order_items: self.orderItems }
         const response = await $http.post(self.djangoRestApi + '/submit-order', data)
-        self.order = response.data
-        // change screen to show order
-    }
-
-    self.clearAlert = () => {
-        self.itemExists = false
-    }
-
-    self.clearInput = () => {
-        self.itemInput = ''
-    }
-
-    const capitalize = name => {
-        if (typeof name !== 'string') return name
-        return name.charAt(0).toUpperCase() + name.slice(1)
+        self.order = response.data[0]
+        self.orderComplete = true
     }
 
     init()
