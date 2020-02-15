@@ -7,5 +7,6 @@ APP_LIST = [
     'django.contrib.staticfiles',
     'items.apps.ItemsConfig',
     'orders.apps.OrdersConfig',
-    'orderitems.apps.OrderItemsConfig'
+    'orderitems.apps.OrderItemsConfig',
+    'rest_framework',
 ]
