@@ -1,15 +1,14 @@
 .container {
     padding-left: 18%;
     padding-right: 22%;
-    padding-top: 10%;
-    /*background: lightskyblue;*/
+    padding-top: 5%;
     height: 80%
 }
 
 .alert {
-    color: red;
+    color: #ff0000;
     font-size: 16px;
-    height: 5%;
+    min-height: 3%;
     text-align: left;
 }
 
@@ -21,9 +20,9 @@
     height: 8%;
     width: 100%;
     font-size: 26px;
-    color: black;
-    background: darkgrey;
-    border: solid black;
+    color: #000000;
+    background: #a9a9a9;
+    border: solid #000000;
     border-bottom: none;
 }
 
@@ -33,34 +32,23 @@
     padding-bottom: 5%;
     width: 100%;
     min-height: 70%;
-    border: solid black;
-    background: white;
+    border: solid #000000;
+    background: #ffffff;
 }
 
 .footer {
-    margin-top: 20%;
+    margin-top: 5%;
 }
 
+.md-button {
+    min-width: 44px;
+    max-height: 44px !important;
+}
 
+.center {
+    margin-left: 10% !important;
+}
 
-
-
-/*!*md card*!*/
-/*.page-container {*/
-/*    padding: 32px; }*/
-
-/*.page {*/
-/*    margin: 0 auto;*/
-/*    padding: 24px;*/
-/*    max-width: 680px;*/
-/*    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25); }*/
-
-/*.page h1 {*/
-/*    text-align: center;*/
-/*    font-size: 1.8rem;*/
-/*    margin-top: 0;*/
-/*    font-weight: normal; }*/
-
-/*.page p {*/
-/*    line-height: 1.6rem; }*/
-
+.bold {
+    font-weight: 800;
+}
