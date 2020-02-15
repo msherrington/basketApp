@@ -6,57 +6,72 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <title>Basket App</title>
 <!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>-->
-        <script src="controllers/basketCtrl.js"></script>
-        <script src="node_modules/angular/angular.js"></script>
-        <script src="node_modules/angular-material/angular-material.js"></script>
     </head>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="controllers/basketCtrl.js"></script>
     <body>
         <div ng-app="basketApp" ng-controller="basketController as basketCtrl" class="container">
 
-            <div class="box header">
+            <div class="header">
                 <div>Basket App</div>
             </div>
 
-            <div class="box body">
-                <div class="alert">
-                    <p ng-if="basketCtrl.itemExists">Item already in the list</p>
-                </div>
-                <div class="complete" layout="row" layout-align="space-between center">
-<!--                    class="capitalize main-autocomplete"-->
-<!--                    style="min-width: 350px; margin: 8px 16px 8px 0;"-->
-                    <div layout="row" layout-align="start center" flex-gt-xs class="margin08">
-                    <md-autocomplete md-items="item in basketCtrl.itemList"
-                                     md-input-id="item-autocomplete" md-selected-item="self.selectedItem"
-                                     md-search-text="basketCtrl.searchText" md-item-text="item.name"
-                                     md-selected-item-change="basketCtrl.addItem()"
-                                     placeholder="Add items to the order"
-                                     md-min-length="0" md-autofocus="true" md-autoselect="true">
-                        <md-item-template>
-                          <span  md-highlight-text="basketCtrl.searchText">
-                              {{item.name}}
-                          </span>
-<!--                            class="autoCompleteSearch capitalize"-->
-                        </md-item-template>
-                    </md-autocomplete>
+            <div class="box">
+                <div class="body">
+                    <div class="alert">
+                        <p ng-if="basketCtrl.itemExists">"{{basketCtrl.existingItem}}" already added</p>
+                        <p ng-if="!basketCtrl.itemExists"></p>
                     </div>
+
+                    <form>
+                        <md-input-container ng-click="basketCtrl.clearAlert()" class="input-quantity margin8px0 no-md-error">
+                            <input type="text" ng-model="basketCtrl.itemInput" placeholder="Add an Item"/>
+                        </md-input-container>
+                        <md-button class="button-full" ng-click="basketCtrl.addItem()">Save</md-button>
+                        <md-button class="button-full" ng-click="basketCtrl.clearInput()">Clear</md-button>
+                    </form>
                 </div>
 
-<!--                <md-input-container class="input-quantity margin8px0 no-md-error">-->
-<!--                    <input type="text" ng-model="basketCtrl.newItem" placeholder="Add an Item"/>-->
-<!--                </md-input-container>-->
-<!--                <md-button class="button-full" ng-click="basketCtrl.addItem()" type="submit">Save</md-button>-->
+                <div ng-repeat="item in basketCtrl.orderItems">
+                    {{item.name}} - Quantity: {{item.quantity}}
+                    <md-button class="button-full" ng-click="basketCtrl.increase(item)">+</md-button>
+                    <md-button class="button-full" ng-click="basketCtrl.decrease(item)">-</md-button>
+                    <md-button class="button-full" ng-click="basketCtrl.removeItem(item)">x</md-button>
+                </div>
+
+                <div class="footer">
+                    <md-button ng-if="basketCtrl.orderItems[0]" class="button-full" ng-click="basketCtrl.submitOrder()">
+                        Submit Order
+                    </md-button>
+                </div>
+
             </div>
-    <!--        <h3>Calculator:</h3>-->
-    <!--        <p>Variable 1: <input ng-model = "variable1"> </p>-->
-    <!--        <p>Variable 2: <input ng-model = "variable2"> </p>-->
 
-    <!--        <button ng-click = "setOperatorSum()">+</button>-->
-    <!--        <button ng-click = "setOperatorMinus()">-</button>-->
 
-    <!--        <p style="color:blue">{{variable1}} {{ operator }} {{variable2}}</p>-->
-
-    <!--        <button ng-click = "calculate()"> = </button>-->
-    <!--        <p>Result: <b style="color:red">{{ result }}<b></p>-->
         </div>
     </body>
 </html>
+
+<!--            <md-content class="page-container">-->
+<!--                <md-card class="page">-->
+<!--                    <h1>Basket App</h1>-->
+
+<!--                    <div layout-gt-sm="row">-->
+<!--                        <md-input-container class="md-block" flex-gt-sm>-->
+<!--                            <label>First name</label>-->
+<!--                            <input ng-model="item.name">-->
+<!--                        </md-input-container>-->
+
+<!--                        <md-input-container class="md-block" flex-gt-sm>-->
+<!--                            <label>Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End</label>-->
+<!--                            <input ng-model="theMax">-->
+<!--                        </md-input-container>-->
+<!--                    </div>-->
+
+
+<!--                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>-->
+<!--                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>-->
+<!--                    <p>Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>-->
+<!--                </md-card>-->
+<!--            </md-content>-->

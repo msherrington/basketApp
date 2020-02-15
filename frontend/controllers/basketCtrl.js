@@ -7,24 +7,71 @@ app.controller('basketController', function (
     const self = this
 
     const init = async () => {
-        self.itemExists = false
+        self.clearInput()
+        self.clearAlert()
         self.djangoRestApi = 'http://localhost:8000/api'
-        // await getItems()
-        self.itemList = [{id:1, name: 'this'}, {id:2, name: 'that'}]
         self.orderItems = []
+        self.existingItemNames = []
+        // self.itemList = await getItems()//{id:1, name: 'this'}, {id:2, name: 'that'}]
+        // self.itemNames = self.itemList.map(item => item.name.toLowerCase())
     }
 
     const getItems = async () => {
-        await $http.get(self.djangoRestApi + '/item-list/').then(response => {
-            self.itemList = response.data
-        })
+        const response = await $http.get(self.djangoRestApi + '/items/')
+        return response.data
     }
 
     self.addItem = () => {
-        self.itemExists = !self.itemExists
-        // work out if the self.newItem is already in the orderitems
-        // if it's not, add it
-        // otherwise alert the user
+        if (self.itemInput) {
+            const lower = self.itemInput.toLowerCase()
+            const formattedName = capitalize(self.itemInput)
+            if (self.existingItemNames.includes(lower)) {
+                self.existingItem = formattedName
+                self.itemExists = true
+            } else {
+                const newItem = {
+                    quantity: 1,
+                    name: formattedName
+                }
+                self.orderItems.push(newItem)
+                self.existingItemNames.push(lower)
+            }
+            self.clearInput()
+        }
+    }
+
+    self.increase = item => {
+        item.quantity++
+    }
+
+    self.decrease = item => {
+        if (item.quantity > 1) {
+            item.quantity--
+        }
+    }
+
+    self.removeItem = item => {
+        const index = self.orderItems.indexOf(item)
+        if (index > -1) {
+            self.orderItems.splice(index, 1);
+        }
+    }
+
+    self.submit = () => {
+
+    }
+
+    self.clearAlert = () => {
+        self.itemExists = false
+    }
+
+    self.clearInput = () => {
+        self.itemInput = ''
+    }
+
+    const capitalize = name => {
+        if (typeof name !== 'string') return name
+        return name.charAt(0).toUpperCase() + name.slice(1)
     }
 
     // load all items

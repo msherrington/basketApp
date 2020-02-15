@@ -1,7 +1,9 @@
 .container {
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 18%;
+    padding-right: 22%;
     padding-top: 10%;
+    /*background: lightskyblue;*/
+    height: 80%
 }
 
 .alert {
@@ -11,33 +13,51 @@
     text-align: left;
 }
 
-.box {
-    padding: 20px;
-    width: 100%;
-    border: solid black;
-    /*margin-left: 20%;*/
-    /*margin-right: 20%;*/
-}
-
 .header {
-    /*margin-top: 10%;*/
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
     border-radius: 25px 25px 0 0;
+    height: 8%;
+    width: 100%;
     font-size: 26px;
     color: black;
     background: darkgrey;
-    height: 10%;
+    border: solid black;
     border-bottom: none;
 }
 
-.body {
-    /*margin-bottom: 20%;*/
-    /*border-radius: 0 0 25px 25px;*/
-    /*font-size: 18px;*/
-    /*color: black;*/
-    /*background: darkgrey;*/
-    height: 100%;
+.box {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    min-height: 70%;
+    border: solid black;
+    background: white;
 }
 
-.complete {
-    height: 100px;
-}
+
+
+
+
+
+/*!*md card*!*/
+/*.page-container {*/
+/*    padding: 32px; }*/
+
+/*.page {*/
+/*    margin: 0 auto;*/
+/*    padding: 24px;*/
+/*    max-width: 680px;*/
+/*    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25); }*/
+
+/*.page h1 {*/
+/*    text-align: center;*/
+/*    font-size: 1.8rem;*/
+/*    margin-top: 0;*/
+/*    font-weight: normal; }*/
+
+/*.page p {*/
+/*    line-height: 1.6rem; }*/
+
