@@ -1,0 +1,20 @@
+<div class="body">
+    <md-content class="layout-margin layout-padding">
+        <h1>Order Submitted</h1>
+        <h3>Order Number {{basketCtrl.order.order_number}}</h3>
+    </md-content>
+
+    <md-content >
+        <md-list>
+            <md-list-item class="md-list-item-text center" ng-repeat="item in basketCtrl.order.order_items">
+                {{item.quantity}} x {{item.item_name}}
+            </md-list-item>
+        </md-list>
+    </md-content>
+
+    <div class="footer">
+        <md-button class="md-button md-raised" ng-click="basketCtrl.newOrder()">
+            New Order
+        </md-button>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="body">
+    <div class="alert">
+        <p ng-if="basketCtrl.itemExists">
+                            <span class="bold">
+                                {{basketCtrl.existingItem}}
+                            </span> already in the basket
+        </p>
+        <p style="color: white !important;" ng-if="!basketCtrl.itemExists">....</p>
+    </div>
+
+    <form ng-submit="basketCtrl.addItem()">
+        <md-input-container ng-click="basketCtrl.clearAlert()" class="md-input-container md-input-has-value">
+            <input tabindex="1" class="md-input" type="text" placeholder="Add an Item"
+                   ng-change="basketCtrl.changeInput()" ng-model="basketCtrl.itemInput"/>
+        </md-input-container>
+        <md-button tabindex="2" class="md-button md-raised" ng-click="basketCtrl.addItem()">Add</md-button>
+        <md-button tabindex="3" class="md-button md-raised" ng-click="basketCtrl.clearInput()"
+                   ng-if="basketCtrl.itemInput">Clear</md-button>
+    </form>
+
+    <md-content class="layout-padding">
+        <div ng-if="basketCtrl.existingItemNames[0]">
+            Items in Basket: {{ basketCtrl.existingItemNames.length }}
+        </div>
+    </md-content>
+
+    <div ng-repeat="item in basketCtrl.orderItems">
+        <div class="layout-wrap layout-row layout-fill">
+            <div class="flex-25 layout-margin layout-padding">
+                <span class="bold">{{item.item_name}}</span>
+            </div>
+            <div class="flex-15s layout-margin layout-padding">Quantity: {{item.quantity}}</div>
+            <md-button class="flex-5 md-button md-raised" ng-click="basketCtrl.increase(item)">+</md-button>
+            <md-button class="flex-5 md-button md-raised" ng-click="basketCtrl.decrease(item)">-</md-button>
+            <md-button class="flex-5 md-button md-raised" ng-click="basketCtrl.removeItem(item)">x</md-button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <md-button tabindex="4" class="md-button md-raised"
+                   ng-if="basketCtrl.orderItems[0]" ng-click="basketCtrl.submitOrder()">
+            Submit Order
+        </md-button>
+    </div>
+</div>
