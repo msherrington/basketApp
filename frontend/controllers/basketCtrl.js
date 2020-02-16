@@ -46,7 +46,7 @@ app.controller('basketController', function ($http) {
     }
 
     self.changeInput = () => {
-        if (self.itemInput && self.itemInput.toLowerCase() !== self.existingItem.toLowerCase()) {
+        if (self.itemInput && self.existingItem && self.itemInput.toLowerCase() !== self.existingItem.toLowerCase()) {
             self.clearAlert()
         }
     }
