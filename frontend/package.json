@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.7.9",
-    "angular-material": "^1.1.21"
+    "angular-material": "^1.1.21",
+    "grunt": "^1.0.4",
+    "grunt-serve": "^0.1.6"
   }
 }
