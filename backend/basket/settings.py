@@ -1,7 +1,7 @@
 import os
 from basket.apps import APP_LIST
 from basket.middleware import MIDDLEWARE_LIST
-from basket.secret_settings import KEY, DEBUGGING
+# from basket.secret_settings import KEY, DEBUGGING
 from basket.templates import TEMPLATE_LIST
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = KEY
+SECRET_KEY = KEY or 'abcde'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEBUGGING or False
