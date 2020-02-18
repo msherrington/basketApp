@@ -83,5 +83,5 @@ Single Page Application built with Django and AngularJS
 
 5. Open the basketApp
 
-    Open a browser window and navigate to [localhost:9000/index.html](localhost:9000/index.html)
+    Open a browser window and navigate to `localhost:9000/index.html`
 
