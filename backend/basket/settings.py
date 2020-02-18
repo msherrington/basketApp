@@ -17,7 +17,7 @@ SECRET_KEY = 'abcde'  # KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False  # DEBUGGING or False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'file']
 
 
 # Application definition
