@@ -38,7 +38,7 @@ Single Page Application built with Django and AngularJS
 
 7. Install project requirements within the virtual environment
 
-   `pip install -r backend/basket/requirements.txt`
+   `pip install -r ./basket/requirements.txt`
 
 8. Create all database migrations
 
