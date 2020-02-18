@@ -15,7 +15,7 @@ Single Page Application built with Django and AngularJS
 
     [https://github.com/msherrington/basketApp](https://github.com/msherrington/basketApp)
 
-3. Navigate to the backend directory
+3. In the terminal, navigate to the backend directory
 
     `/basketApp/backend`
 
@@ -64,7 +64,7 @@ Single Page Application built with Django and AngularJS
 
     [https://docs.npmjs.com/downloading-and-installing-node-js-and-npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-2. Navigate to the frontend directory
+2. In a new terminal window/tab, navigate to the frontend directory
 
     `/basketApp/frontend`
 
